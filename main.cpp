@@ -19,4 +19,6 @@ int main() {
 	// show count sorted
 	std::vector<std::pair<std::string, int> > sortedCol = parseCsv.sortCounts(myCounts);
 	parseTools.printSorted(sortedCol);
+
+	parseCsv.getHeader();
 }

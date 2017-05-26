@@ -13,6 +13,20 @@ void ParseCsv::setFilePath(std::string path) {
 	filePath = path;
 }
 
+std::vector<std::string> ParseCsv::getHeader() {
+	std::ifstream file(filePath.c_str());
+	std::string line;
+	std::getline(file, line);
+	std::stringstream myLine(line);
+	std::vector<std::string> headers;
+	while (myLine.good()) {
+		std::string header;
+		std::getline(myLine, header, ',');
+		headers.push_back(header);
+	}
+	return headers;
+}
+
 std::vector<std::vector<std::string> > ParseCsv::parser() {
 	std::ifstream file(filePath.c_str());
 	std::string line;
