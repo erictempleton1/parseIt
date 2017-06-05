@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <algorithm>
 
 
 void ParseTools::printCol(std::vector<std::string> &col) {
@@ -22,4 +23,11 @@ void ParseTools::printSorted(std::vector<std::pair<std::string, int> > &sortedVe
 	for (int i = 0; i < sortedVecPair.size(); i++) {
 		std::cout << sortedVecPair[i].first << " " << sortedVecPair[i].second << std::endl;
 	}
+}
+
+bool ParseTools::vectorContains(std::vector<std::string> &myVec, std::string myElem) {
+	if (std::find(myVec.begin(), myVec.end(), myElem) != myVec.end()) {
+		return true;
+	}
+	return false;
 }

@@ -1,5 +1,6 @@
 #include "parseIt.h"
 #include "parseTools.h"
+#include <vector>
 
 
 int main() {
@@ -20,5 +21,7 @@ int main() {
 	std::vector<std::pair<std::string, int> > sortedCol = parseCsv.sortCounts(myCounts);
 	parseTools.printSorted(sortedCol);
 
-	parseCsv.getHeader();
+	// check if header contains a value
+	std::vector<std::string> headerRow = parseCsv.getHeader();
+	std::cout << parseTools.vectorContains(headerRow, "CrimeDate") << std::endl;
 }
