@@ -26,11 +26,12 @@ int main() {
 	std::vector<std::pair<std::string, int> > sortedCol = parseCsv.sortCounts(counts);
 	std::vector<std::pair<std::string, int> > &sorted = sortedCol;
 
-	parseTools.printSorted(sorted);
+	// parseTools.printSorted(sorted);
 
 	// check if header contains a value
-	std::vector<std::string> headerRow = parseCsv.getHeader();
+	std::vector<std::string> headerRow = parseCsv.getHeader(fullFile);
 	std::vector<std::string> &header = headerRow;
 
 	std::cout << parseTools.vectorContains(header, "CrimeDate") << std::endl;
+
 }

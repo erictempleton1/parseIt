@@ -13,21 +13,12 @@ void ParseCsv::setFilePath(std::string path) {
 	filePath = path;
 }
 
-
-// todo - this re-reads the entire file into memory again.
-// can we parse the existing 2d vector and grab the first element of each vector instead?
-std::vector<std::string> ParseCsv::getHeader() {
-	std::ifstream file(filePath.c_str());
-	std::string line;
-	std::getline(file, line);
-	std::stringstream myLine(line);
-	std::vector<std::string> headers;
-	while (myLine.good()) {
-		std::string header;
-		std::getline(myLine, header, ',');
-		headers.push_back(header);
+std::vector<std::string> ParseCsv::getHeader(std::vector<std::vector<std::string> > &fullFile) {
+	std::vector<std::string> headerRow;
+	for (int i = 0; i < fullFile[0].size(); i++) {
+		headerRow.push_back(fullFile[0][i]);
 	}
-	return headers;
+	return headerRow;
 }
 
 std::vector<std::vector<std::string> > ParseCsv::parser() {

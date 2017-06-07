@@ -16,5 +16,5 @@ class ParseCsv {
 		std::map<std::string, int> counter(std::vector<std::string> &col);
 		std::vector<std::pair<std::string, int> > sortCounts(std::map<std::string, int> &countMap);
 		static bool comparison(const std::pair<std::string, int> &a, const std::pair<std::string, int> &b);
-		std::vector<std::string> getHeader();
+		std::vector<std::string> getHeader(std::vector<std::vector<std::string> > &fullFile);
 };
