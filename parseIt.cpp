@@ -7,6 +7,7 @@
 #include <vector>
 #include <algorithm>
 #include <map>
+#include <stdexcept>
 
 
 void ParseCsv::setFilePath(std::string path) {
@@ -37,12 +38,28 @@ std::vector<std::vector<std::string> > ParseCsv::parser() {
 	return fullList;
 }
 
+int ParseCsv::elementIndex(std::vector<std::string> &myVec, std::string myElem) {
+	return std::find(myVec.begin(), myVec.end(), myElem) - myVec.begin();
+}
+
 std::vector<std::string> ParseCsv::singleCol(std::vector<std::vector<std::string> > &fullFile, int colNum) {
 	std::vector<std::string> col;
 	for (int i = 0; i < fullFile.size(); i++) {
 		col.push_back(fullFile[i][colNum]);
 	}
 	return col;
+}
+
+std::vector<std::string> ParseCsv::singleCol(std::vector<std::vector<std::string> > &fullFile, std::string colName, std::vector<std::string> &header) {
+	int elemIndex = elementIndex(header, colName);
+	std::vector<std::string> col;
+	if (elemIndex <= header.size()) {
+		for (int i = 0; i < fullFile.size(); i++) {
+			col.push_back(fullFile[i][elemIndex]);
+		}
+		return col;
+	}
+	throw std::length_error("error");
 }
 
 bool ParseCsv::containsUnique(std::vector<std::string> &col) {
