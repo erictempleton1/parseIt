@@ -12,16 +12,25 @@ int main() {
 
 	// parse file and select certain column
 	std::vector<std::vector<std::string> > parsed = parseCsv.parser();
-	std::vector<std::string> dateCol = parseCsv.singleCol(parsed, 4);
+	std::vector<std::vector<std::string> > &fullFile = parsed;
+
+	std::vector<std::string> singleCol = parseCsv.singleCol(fullFile, 4);
+	std::vector<std::string> &myCol = singleCol;
+
 
 	// map and display count
-	std::map<std::string, int> myCounts = parseCsv.counter(dateCol);
+	std::map<std::string, int> myCounts = parseCsv.counter(myCol);
+	std::map<std::string, int> &counts = myCounts;
 
 	// show count sorted
-	std::vector<std::pair<std::string, int> > sortedCol = parseCsv.sortCounts(myCounts);
-	parseTools.printSorted(sortedCol);
+	std::vector<std::pair<std::string, int> > sortedCol = parseCsv.sortCounts(counts);
+	std::vector<std::pair<std::string, int> > &sorted = sortedCol;
+
+	parseTools.printSorted(sorted);
 
 	// check if header contains a value
 	std::vector<std::string> headerRow = parseCsv.getHeader();
-	std::cout << parseTools.vectorContains(headerRow, "CrimeDate") << std::endl;
+	std::vector<std::string> &header = headerRow;
+
+	std::cout << parseTools.vectorContains(header, "CrimeDate") << std::endl;
 }
