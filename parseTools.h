@@ -10,4 +10,5 @@ class ParseTools {
 		void displayCounts(std::map<std::string, int> &countMap);
 		void printSorted(std::vector<std::pair<std::string, int> > &sortedVecPair);
 		bool vectorContains(std::vector<std::string> &myVec, std::string myElem);
+		int elementIndex(std::vector<std::string> &myVec, std::string myElem);
 };

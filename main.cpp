@@ -33,5 +33,5 @@ int main() {
 	std::vector<std::string> &header = headerRow;
 
 	std::cout << parseTools.vectorContains(header, "CrimeDate") << std::endl;
-
+	std::cout << parseTools.elementIndex(header, "CrimeDates") << std::endl;
 }

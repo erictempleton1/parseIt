@@ -26,8 +26,9 @@ void ParseTools::printSorted(std::vector<std::pair<std::string, int> > &sortedVe
 }
 
 bool ParseTools::vectorContains(std::vector<std::string> &myVec, std::string myElem) {
-	if (std::find(myVec.begin(), myVec.end(), myElem) != myVec.end()) {
-		return true;
-	}
-	return false;
+	return (std::find(myVec.begin(), myVec.end(), myElem) != myVec.end());
+}
+
+int ParseTools::elementIndex(std::vector<std::string> &myVec, std::string myElem) {
+	return std::find(myVec.begin(), myVec.end(), myElem) - myVec.begin();
 }
